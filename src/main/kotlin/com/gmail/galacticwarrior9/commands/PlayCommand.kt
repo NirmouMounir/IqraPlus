@@ -32,9 +32,9 @@ class PlayCommand(private val logger: Logger) : CoroutineEventListener {
         if (surahNumber < 1 || surahNumber > 114) {
             return event.replySafely(":warning: The surah number must be between 1 and 114.", true)
         }
-        if surahNumber !in reci{
-
-        }
+        /*if (surahNumber !in reciter.suras) {
+            return event.sendDeferredReply("This surah is not available for this reciter.", true)
+        }*/
 
         val surahMeta = getSurahMeta(surahNumber) ?: run {
             return event.sendDeferredReply(":warning: Failed to retrieve information for this surah. Please try again later.", true)
@@ -92,7 +92,7 @@ class PlayCommand(private val logger: Logger) : CoroutineEventListener {
             reciter = reciter as SurahReciter
             val newUrl = "${reciter.server}/${surahNumber.toString().padStart(3, '0')}.mp3"
 
-            if (surahNumber !in reciter.suras {
+            if (!reciter.suras.split(",").contains(surahNumber.toString())) {
                 return event.sendDeferredReply("This surah is not available for this reciter.", true)
             }
 
