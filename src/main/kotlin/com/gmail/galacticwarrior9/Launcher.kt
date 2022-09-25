@@ -8,7 +8,7 @@ import net.dv8tion.jda.api.requests.GatewayIntent
 import net.dv8tion.jda.api.utils.cache.CacheFlag
 
 fun main() {
-    val jda = JDABuilder.createDefault(System.getenv("token"))
+    val jda = JDABuilder.createDefault(/*System.getenv("token")*/"MTAxOTY4ODQ4MTU2OTY0MDUzOQ.GytiIq.f412OPnW3rUGY4mG_viaJl3rc2ahE3ZWsXphqI")
         .setActivity(Activity.listening("Qurʾān - /help"))
         .setAudioSendFactory(NativeAudioSendFactory())
         .disableCache(CacheFlag.ACTIVITY,

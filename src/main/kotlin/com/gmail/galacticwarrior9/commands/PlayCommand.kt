@@ -93,7 +93,7 @@ class PlayCommand(private val logger: Logger) : CoroutineEventListener {
             val newUrl = "${reciter.server}/${surahNumber.toString().padStart(3, '0')}.mp3"
 
             if (!reciter.suras.split(",").contains(surahNumber.toString())) {
-                return event.sendDeferredReply("This surah is not available for this reciter.", true)
+                return event.sendDeferredReply("This surah is not available for this reciter."+reciter.suras, true)
             }
 
             guildAudioManager.playerManager.loadItem(newUrl, object : AudioLoadResultHandler {
